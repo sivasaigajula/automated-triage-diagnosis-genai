@@ -1,0 +1,23 @@
+sequenceDiagram
+    actor User
+    participant Frontend
+    participant API
+    participant SearchTool as Google Search
+    participant Embedding as Text-Embedding-004
+    participant VectorStore
+    participant GenAI as Gemini-2.0-Flash
+    participant Output
+
+    User->>Frontend: Input Symptoms, Vitals
+    Frontend->>API: Send Data (JSON)
+    API->>SearchTool: Fetch Medical Knowledge
+    SearchTool-->>API: Return Articles
+    API->>Embedding: Generate Embeddings
+    Embedding-->>VectorStore: Store/Search Vectors
+    VectorStore-->>API: Return Context
+    API->>GenAI: Process with RAG
+    GenAI->>GenAI: Function Calling (Triage/Risk)
+    GenAI-->>API: Return Diagnoses (JSON)
+    API->>Output: Format HTML Report
+    Output-->>Frontend: Display Report
+    Frontend-->>User: Show Results

@@ -1,0 +1,32 @@
+classDiagram
+    class InputProcessor {
+        +parseInput()
+        +validateInput()
+    }
+    class FunctionCaller {
+        +callTriageScore()
+        +callRiskScore()
+    }
+    class RAGModule {
+        +fetchContext()
+        +embedDocuments()
+    }
+    class DiagnosisGenerator {
+        +generateDiagnoses()
+        +structureJSON()
+    }
+    class ChartGenerator {
+        +createSimilarityChart()
+    }
+    class ReportRenderer {
+        +renderHTML()
+        +translateOutput()
+    }
+
+    InputProcessor --> FunctionCaller
+    InputProcessor --> RAGModule
+    RAGModule --> DiagnosisGenerator
+    FunctionCaller --> DiagnosisGenerator
+    DiagnosisGenerator --> ChartGenerator
+    DiagnosisGenerator --> ReportRenderer
+    ChartGenerator --> ReportRenderer

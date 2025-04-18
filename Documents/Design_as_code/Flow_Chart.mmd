@@ -1,0 +1,14 @@
+graph TD
+    A[User Input<br>Symptoms, Vitals, History] --> B[API Gateway]
+    B --> C[GenAI Services<br>Gemini-2.0-Flash]
+    B --> D[Text-Embedding-004<br>Embeddings]
+    B --> E[Google Search Tool<br>Medical Knowledge]
+    C --> F[Function Calling<br>Triage & Risk Scores]
+    C --> G[Diagnosis Generation<br>JSON Output]
+    C --> H[Translation<br>Multi-Language]
+    D --> I[Vector Store<br>Medical Docs]
+    I --> J[RAG & Similarity<br>Context Retrieval]
+    E --> J
+    G --> K[Output Layer<br>HTML/CSS Report]
+    J --> K
+    K --> L[EHR Integration<br>Patient History]
